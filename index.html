@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dukaan Saathi</title>
+<title>Bolkar Dukaan</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#D62828">
 <link rel="icon" href="icon-192.png">
@@ -135,15 +135,148 @@ input:focus,select:focus{box-shadow:0 0 0 3px color-mix(in srgb,var(--pri) 22%,t
 button{min-height:44px}
 @media (max-width:480px){.tt{min-height:84px;font-size:15px}}
 </style>
-</head>
+<style id='bigui'>button,input,select{font-size:17px}button{min-height:48px;border-radius:12px}.tt{min-height:72px}input,select{min-height:46px}</style>
+<style id='newlook'>
+:root{--bg:#FBF7F1;--card:#ffffff;--ink:#3B2F26;--mut:#8A7B6C;--line:#F1E9DE;--pri:#E4572E;--sh:0 4px 16px rgba(90,60,30,.08)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1F1A15;--card:#2A241D;--ink:#FFF5EA;--mut:#BBA994;--line:#3D342A;--sh:0 4px 16px rgba(0,0,0,.3)}}
+html,body{background-color:var(--bg)!important;background-image:none!important}
+body{font-family:Inter,"Noto Sans Devanagari",system-ui,sans-serif}
+h1{font-size:24px;font-weight:800}
+h2{font-size:17px;font-weight:700;margin:20px 0 10px}
+.card{border-radius:22px!important;box-shadow:var(--sh)!important;border:0!important;padding:16px!important}
+button,.btn{border-radius:16px!important}
+.tt{border-radius:24px!important;min-height:132px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px;box-shadow:var(--sh)!important}
+.tt i{font-size:0!important;width:76px;height:76px;display:inline-block;background:center/contain no-repeat;margin:0}
+.tt.t1 i{background-image:url(bill.png)}
+.tt.t2 i{background-image:url(udhaar.png)}
+.tt.t3 i{background-image:url(paisa.png)}
+.tt.t4 i{background-image:url(kharcha.png)}
+.tt.t5 i{background-image:url(dealer.png)}
+.tt.t6 i{background-image:url(saaman.png)}
+.tt.t7 i{background-image:url(mic.png)}
+.tt span{font-size:15px;font-weight:700}
+#nav button svg{display:none!important}
+#nav button{border-radius:18px!important;flex-direction:column;gap:2px;font-size:13px;font-weight:700}
+#nav button::before{content:"";display:block;width:34px;height:34px;margin:0 auto 2px;background:center/contain no-repeat}
+#nav button:nth-child(1)::before{background-image:url(ghar.png)}
+#nav button:nth-child(2)::before{background-image:url(bill.png)}
+#nav button:nth-child(3)::before{background-image:url(udhaar.png)}
+#nav button:nth-child(4)::before{background-image:url(kharcha.png)}
+#nav button:nth-child(5)::before{background-image:url(saaman.png)}
+#nav button:nth-child(6)::before{background-image:url(dealer.png)}
+#nav button.on{background:var(--card)!important;box-shadow:var(--sh)}
+</style>
+<style id='colors'>
+:root{--bg:#F4F7FB;--card:#FFFFFF;--ink:#1E293B;--mut:#64748B;--line:#E2E8F0;--pri:#16A34A;--onp:#FFFFFF;--red:#EF4444;--amb:#FFF7ED;--ambt:#C2410C;--ambb:#FED7AA;--grn:#DCFCE7;--hd1:#16A34A;--hd2:#22C55E;--sh:0 6px 18px rgba(15,23,42,.08);--tg:#DCFCE7;--to:#FFEDD5;--tp:#FCE7F3;--tb:#DBEAFE;--xg:#15803D;--xo:#C2410C;--xp:#BE185D;--xb:#1D4ED8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F172A;--card:#1E293B;--ink:#F1F5F9;--mut:#94A3B8;--line:#334155;--pri:#22C55E;--onp:#052E16;--red:#F87171;--sh:0 6px 18px rgba(0,0,0,.35);--grn:#14532D;--tg:#14532D;--to:#431407;--tp:#500724;--tb:#1E3A8A}}
+html,body{background:var(--bg)!important;color:var(--ink)!important}
+body{font-family:Inter,"Noto Sans Devanagari",system-ui,sans-serif}
+#app{padding-top:12px}
+h1{color:var(--ink);font-weight:800}
+h2{color:var(--ink)}
+.mut{color:var(--mut)!important}
+.card{background:var(--card)!important;color:var(--ink)!important}
+input,select,textarea{background:var(--card)!important;color:var(--ink)!important;border:1.5px solid var(--line)!important;border-radius:14px!important}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#22C55E!important;box-shadow:0 0 0 3px rgba(34,197,94,.18)!important}
+button{background:linear-gradient(135deg,#16A34A,#22C55E);color:#fff;border:0;font-weight:700;box-shadow:0 4px 12px rgba(22,163,74,.25)}
+button.o,button.secondary,button.s{background:var(--card);color:#15803D;border:1.5px solid #BBF7D0;box-shadow:none}
+button.o:hover,button.s:hover{background:#F0FDF4}
+button.red,button.danger{background:linear-gradient(135deg,#EF4444,#F97316)}
+.note{background:#FFF7ED!important;color:#9A3412!important;border:0!important;border-radius:16px!important}
+.billbar{background:linear-gradient(135deg,#1D4ED8,#7C3AED)!important;color:#fff!important;border-radius:22px!important;box-shadow:0 10px 24px rgba(79,70,229,.35)!important}
+.billbar .mut,.billbar span{color:#E0E7FF!important}
+.bb-tot{color:#fff!important}
+.tt.t1{background:linear-gradient(135deg,#DCFCE7,#BBF7D0)!important}
+.tt.t2{background:linear-gradient(135deg,#FEF9C3,#FDE68A)!important}
+.tt.t3{background:linear-gradient(135deg,#DBEAFE,#BFDBFE)!important}
+.tt.t4{background:linear-gradient(135deg,#FFEDD5,#FED7AA)!important}
+.tt.t5{background:linear-gradient(135deg,#E0E7FF,#C7D2FE)!important}
+.tt.t6{background:linear-gradient(135deg,#FCE7F3,#FBCFE8)!important}
+.tt.t7{background:linear-gradient(135deg,#EDE9FE,#DDD6FE)!important}
+.tt span{color:#1E293B!important}
+#nav{background:var(--card)!important;border-top:1px solid var(--line)!important;box-shadow:0 -6px 20px rgba(15,23,42,.06)}
+#nav button{background:transparent!important;color:#64748B!important;box-shadow:none!important}
+#nav button.on{background:#DCFCE7!important;color:#15803D!important}
+#nav button.on::before{transform:scale(1.08)}
+.row{border-bottom:1px solid var(--line)}
+.hero{background:linear-gradient(135deg,#16A34A,#059669)!important;color:#fff!important;border-radius:24px!important;box-shadow:0 10px 24px rgba(22,163,74,.3)}
+.hero small,.hero span{color:#D1FAE5!important}
+.hero b{color:#fff!important}
+.red{color:#DC2626!important}
+.grn{color:#15803D!important}
+</style>
+<style id='polish'>
+/* ---- typography scale ---- */
+body{font-size:16px;line-height:1.55;letter-spacing:.1px;-webkit-font-smoothing:antialiased}
+h1{font-size:26px;line-height:1.2;letter-spacing:-.4px;margin:6px 0 16px}
+h2{font-size:15px;text-transform:uppercase;letter-spacing:.8px;color:var(--mut);font-weight:700;margin:26px 0 12px;display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:4px;height:16px;border-radius:4px;background:linear-gradient(#16A34A,#22C55E);flex:none}
+.mut{font-size:14px}
+/* ---- spacing and cards ---- */
+#app{padding:14px 16px 112px}
+.card{padding:18px!important;margin:0 0 14px;border:1px solid var(--line)!important;box-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 22px rgba(15,23,42,.06)!important;transition:transform .15s ease,box-shadow .15s ease}
+.card:active{transform:scale(.995)}
+.row{padding:12px 0!important}
+.row:last-child{border-bottom:0}
+/* ---- buttons: depth and press feedback ---- */
+button{transition:transform .12s ease,box-shadow .2s ease,filter .2s ease;letter-spacing:.2px;min-height:48px;padding:12px 18px}
+button:hover{filter:brightness(1.04)}
+button:active{transform:translateY(1px) scale(.98);box-shadow:0 2px 6px rgba(22,163,74,.2)!important}
+button.w{width:100%;min-height:52px;font-size:16px}
+/* ---- quick tiles ---- */
+.tt{border-radius:26px!important;border:1px solid rgba(255,255,255,.7);min-height:140px!important;padding:14px 8px!important;transition:transform .15s ease,box-shadow .2s ease}
+.tt:active{transform:scale(.97)}
+.tt i{width:84px!important;height:84px!important;filter:drop-shadow(0 8px 10px rgba(15,23,42,.12))}
+.tt span{font-size:15px;letter-spacing:.1px}
+/* ---- hero header ---- */
+.hero{padding:18px!important;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.12)}
+.hero::before{content:"";position:absolute;right:40px;bottom:-40px;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero b{font-size:20px;letter-spacing:-.2px}
+.hero small{font-size:13px;opacity:.9}
+/* ---- bottom menu: floating pill ---- */
+#nav{margin:0 12px 12px;border-radius:24px!important;border:1px solid var(--line)!important;box-shadow:0 10px 30px rgba(15,23,42,.12)!important;padding:8px 6px!important;left:0;right:0;bottom:0}
+#nav button{font-size:12px!important;border-radius:18px!important;padding:6px 2px!important;min-height:58px}
+#nav button.on{box-shadow:0 4px 12px rgba(22,163,74,.18)!important}
+/* ---- inputs and notes ---- */
+input,select,textarea{min-height:48px;padding:12px 14px;font-size:16px}
+textarea{min-height:90px}
+.note{padding:14px 16px!important;border-left:4px solid #F97316!important;font-size:15px}
+.billbar{padding:16px 18px!important}
+.bb-tot{font-size:28px;font-weight:800;letter-spacing:-.4px}
+/* ---- screen entrance animation ---- */
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#app.in > *{animation:none}
+#app.in > *:nth-child(2){animation-delay:.04s}
+#app.in > *:nth-child(3){animation-delay:.08s}
+#app.in > *:nth-child(4){animation-delay:.12s}
+/* ---- focus and accessibility ---- */
+:focus-visible{outline:3px solid rgba(34,197,94,.45);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+/* ---- tab transitions: slide in from direction of travel ---- */
+@keyframes slideInR{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:none}}
+@keyframes slideInL{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:none}}
+#app.tabfx[data-dir="f"] > *{animation:slideInR .38s cubic-bezier(.2,.8,.2,1) both}
+#app.tabfx[data-dir="b"] > *{animation:slideInL .38s cubic-bezier(.2,.8,.2,1) both}
+#app.tabfx > *:nth-child(2){animation-delay:.04s}
+#app.tabfx > *:nth-child(3){animation-delay:.08s}
+#app.tabfx > *:nth-child(4){animation-delay:.12s}
+#app.tabfx > *:nth-child(5){animation-delay:.16s}
+#app.tabfx > *:nth-child(n+6){animation-delay:.2s}
+#nav button{transition:background .25s ease,color .25s ease,transform .15s ease}
+#nav button:active{transform:scale(.92)}
+#nav button.on::before{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+</style>
+d>
 <body>
-<div id="splash"><div class="lg">D</div><p>Dukaan Saathi</p></div>
+<div id="splash"><div class="lg" style="background:#fff"><img src="icon-512.png" alt="" style="width:100%;height:100%;object-fit:contain;border-radius:24px"></div><p>Dukaan Saathi</p></div>
 <div id="app"></div>
 <nav id="nav"></nav>
 
 <div id="authGate" role="dialog" aria-label="Bolkar Dukaan login">
   <div class="auth-wrap">
-    <div class="auth-brand"><div class="auth-logo">B</div><div><div class="auth-title">Bolkar Dukaan</div><div class="auth-sub">Aap Bolo, Dukaan Kaam Karegi</div></div></div>
+    <div style="text-align:center;margin:8px 0 4px"><img src="logo-full.png" alt="Bolkar Dukaan" style="width:70%;max-width:280px;height:auto"></div><div class="auth-brand"><div class="auth-logo" style="background:#fff;padding:4px"><img src="icon-192.png" alt="Bolkar Dukaan" style="width:100%;height:100%;object-fit:contain;border-radius:12px"></div><div><div class="auth-title">Bolkar Dukaan</div><div class="auth-sub">Aap Bolo, Dukaan Kaam Karegi</div></div></div>
     <div class="auth-card">
       <h2 id="authHeading">Apne mobile number se login karein</h2>
       <p id="authDescription">Aapke account ki pehchan ke liye SMS OTP ka istemal hoga.</p>
@@ -241,8 +374,9 @@ function es(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;
 function sum(a){return a.reduce(function(x,y){return x+y.amt},0)}
 function today(a){return a.filter(function(x){return x.d===td()})}
 function bal(){var m={};S.led.forEach(function(l){m[l.name]=(m[l.name]||0)+(l.type==="udhaar"?l.amt:-l.amt)});return m}
-function go(t){tab=t;CV="";var a=document.getElementById("app");a.classList.remove("in");draw();void a.offsetWidth;a.classList.add("in")}
-function listen(cb){var R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R){notify("Is browser me voice nahi chalta. Chrome use karo.");return}var x=new R();x.lang="hi-IN";x.onresult=function(e){var tr=e.results[0][0].transcript;vState("proc");vState("ok",tr);cb(tr)};x.onstart=function(){document.title="Sun raha hu...";vState("listen")};x.onend=function(){document.title="Dukaan Saathi"};x.onerror=function(e){vState("bad");var m={"not-allowed":"Yahan browser mic nahi de raha. Upar wale box me keyboard ke mic se bolo.","service-not-allowed":"Yahan browser mic nahi de raha. Upar wale box me keyboard ke mic se bolo.","network":"Internet nahi hai ya voice service nahi mili.","no-speech":"Kuch sunai nahi diya. Mic ke paas bolo.","audio-capture":"Mic nahi mila."};notify((m[e.error]||"Voice nahi chali")+" (code: "+e.error+")");var f=document.getElementById(typeof SF!=="undefined"&&SF?SF:"us");if(f)f.focus()};try{x.start()}catch(er){notify("Voice shuru nahi hui: "+er.message)}}
+var TABS_ORD=["home","bill","udhaar","kharcha","saaman","dealer"];function go(t){var old=TABS_ORD.indexOf(tab),nw=TABS_ORD.indexOf(t);tab=t;CV="";var a=document.getElementById("app");a.setAttribute("data-dir",nw>=old?"f":"b");draw();a.classList.remove("tabfx");void a.offsetWidth;a.classList.add("tabfx");clearTimeout(a._t);a._t=setTimeout(function(){a.classList.remove("tabfx")},700)}
+function vPick(alts){var best=alts[0],bs=-1;alts.forEach(function(a){var sc=0;if(/\d/.test(a))sc+=2;try{if(vFuzzyCand(a).length||vParse(a))sc+=3}catch(e){}if(sc>bs){bs=sc;best=a}});return best}
+function listen(cb){var R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R){notify("Is browser me voice nahi chalta. Chrome use karo.");return}var x=new R();x.lang="hi-IN";x.interimResults=true;x.maxAlternatives=3;x.continuous=false;var done=false;x.onresult=function(e){var live="",best=null;for(var i=e.resultIndex;i<e.results.length;i++){var r=e.results[i];if(r.isFinal){var alts=[];for(var j=0;j<r.length;j++)alts.push(r[j].transcript.trim());best=vPick(alts)}else live+=r[0].transcript}var st=document.getElementById("vst");if(st&&!best&&live)st.textContent="Sun raha hoon: "+live;if(best&&!done){done=true;vState("proc");vState("ok",best);cb(best)}};x.onstart=function(){document.title="Sun raha hu...";vState("listen")};x.onend=function(){document.title="Dukaan Saathi"};x.onerror=function(e){vState("bad");var m={"not-allowed":"Yahan browser mic nahi de raha. Upar wale box me keyboard ke mic se bolo.","service-not-allowed":"Yahan browser mic nahi de raha. Upar wale box me keyboard ke mic se bolo.","network":"Internet nahi hai ya voice service nahi mili.","no-speech":"Kuch sunai nahi diya. Mic dabakar phir bolo, aur mic ke paas bolo.","audio-capture":"Mic nahi mila."};notify((m[e.error]||"Voice nahi chali")+" (code: "+e.error+")");var f=document.getElementById(typeof SF!=="undefined"&&SF?SF:"us");if(f)f.focus()};try{x.start()}catch(er){notify("Voice shuru nahi hui: "+er.message)}}
 function num(t){var m=String(t).replace(/,/g,"").match(/\d+/);return m?m[0]:""}
 function nm(t){return String(t).replace(/\d+/g," ").replace(/\b(ko|ka|ki|ne|rupaye|rupay|rs|udhaar|udhar|kharcha|diye|diya|दिया|को|रुपये|उधार)\b/gi," ").trim().split(/\s+/).slice(0,2).join(" ")}
 var SF="";function sm(t){var v=document.getElementById(t+"s").value;if(t==="u"){document.getElementById("un").value=nm(v);document.getElementById("ua").value=num(v)}else{document.getElementById("ka").value=num(v);document.getElementById("kn").value=nm(v)}}function vUdhaar(){SF="us";listen(function(t){document.getElementById("un").value=nm(t);document.getElementById("ua").value=num(t)})}
@@ -322,11 +456,16 @@ function restore(){try{var o=JSON.parse(document.getElementById("bt").value);if(
 function nameShop(){var n=prompt("Dukaan ka naam?",S.shop);if(n){S.shop=n;sv();draw()}}
 function sayBack(text){try{if(!window.speechSynthesis)return;window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(String(tx(text)));u.lang="hi-IN";u.rate=.95;window.speechSynthesis.speak(u)}catch(e){}}
 function calcVoice(t){var x=String(t).toLowerCase().replace(/,/g,"").replace(/jodo|jod|plus|प्लस|जोड़ो|जोड़|जमा/g,"+").replace(/minus|ghatao|ghata|माइनस|घटाओ|घटा/g,"-").replace(/guna|गुना|multiply|into|गुणा|times/g,"*").replace(/bhaag|भाग|divide/g,"/");var m=x.match(/(-?\d+(?:\.\d+)?)\s*([+*/-])\s*(-?\d+(?:\.\d+)?)/);if(!m){var n=x.match(/-?\d+(?:\.\d+)?/g);if(n&&n.length===2)m=[null,n[0],"+",n[1]]}if(!m)return null;var a=+m[1],b=+m[3],v=m[2]==="+"?a+b:m[2]==="-"?a-b:m[2]==="*"?a*b:b===0?NaN:a/b;return Number.isFinite(v)?"Calculator ka jawab: "+v:"Is hisaab ka jawab nahi nikal sakta."}
-function vNorm(x){return String(x).toLowerCase().replace(/aa/g,"a").replace(/ii|ee/g,"i").replace(/oo/g,"u").replace(/w/g,"v").replace(/ph/g,"f").replace(/[^a-z0-9\u0900-\u097f]/g,"")}
+function vLev(a,b){var m=a.length,n=b.length,d=[],i,j;if(!m)return n;if(!n)return m;for(i=0;i<=m;i++){d[i]=[i]}for(j=0;j<=n;j++){d[0][j]=j}for(i=1;i<=m;i++){for(j=1;j<=n;j++){var c=a.charAt(i-1)===b.charAt(j-1)?0:1;d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+c)}}return d[m][n]}
+function vTok(x){return String(x).toLowerCase().split(/[^a-z0-9\u0900-\u097f]+/).filter(function(w){return w.length>=3})}
+function vSoft(x){return String(x).toLowerCase().replace(/[aeiouy]/g,"").replace(/(.)\1+/g,"$1")}
+function vFuzzyCand(low){var toks=vTok(low),out=[];S.items.forEach(function(it){var nw=vTok(it.n),hit=false;nw.forEach(function(w){toks.forEach(function(t){var lim=w.length>5?2:1;if(!hit&&(vLev(vNorm(t),vNorm(w))<=lim||vLev(vSoft(t),vSoft(w))<=(w.length>5?1:0)))hit=true})});if(hit)out.push(it)});return out}
+function vSuggest(part){var c=vFuzzyCand(part);return c.length?c[0].n:null}
+function vNorm(x){return String(x).toLowerCase().replace(/aa/g,"a").replace(/tt/g,"t").replace(/ii|ee|y/g,"i").replace(/oo|uu/g,"u").replace(/w/g,"v").replace(/ph/g,"f").replace(/ck/g,"k").replace(/[^a-z0-9\u0900-\u097f]/g,"")}
 var VW={ek:1,do:2,teen:3,char:4,paanch:5,das:10,"एक":1,"दो":2,"तीन":3,"चार":4,"पांच":5,"पाँच":5,"दस":10};
-function vParse(part){var low=String(part).toLowerCase(),nl=vNorm(low),m=low.match(/(\d+(?:\.\d+)?|ek|do|teen|char|paanch|das|एक|दो|तीन|चार|पांच|पाँच|दस)\s*(kg|kilo|किलो|litre|liter|ltr|gram|gm|g|ml|packet|pack|pc|piece|nag|नग|पैकेट)?/),cand=[],best=null;S.items.forEach(function(it){var nn=vNorm(it.n);if(nn&&nl.indexOf(nn)>=0)cand.push({it:it,len:nn.length})});if(!cand.length)return null;var mx=Math.max.apply(null,cand.map(function(c){return c.len}));cand=cand.filter(function(c){return c.len===mx}).map(function(c){return c.it});if(m){var sz=m[1]+(m[2]?" "+m[2]:"");var hit=cand.filter(function(it){return String(it.u||"").toLowerCase().replace(/\s+/g,"").indexOf(m[1]+(m[2]||"").replace(/\s+/g,""))>=0});if(hit.length)cand=hit}best=cand[0];var q=1,un=null;if(m){q=parseFloat(m[1])||VW[m[1]]||1;un=m[2]||null}return {it:best,q:q,unit:un}}
+function vParse(part){var low=String(part).toLowerCase(),nl=vNorm(low),m=low.match(/(\d+(?:\.\d+)?|ek|do|teen|char|paanch|das|एक|दो|तीन|चार|पांच|पाँच|दस)\s*(kg|kilo|किलो|litre|liter|ltr|gram|gm|g|ml|packet|pack|pc|piece|nag|नग|पैकेट)?/),cand=[],best=null;S.items.forEach(function(it){var nn=vNorm(it.n);if(nn&&nl.indexOf(nn)>=0)cand.push({it:it,len:nn.length})});if(!cand.length)cand=vFuzzyCand(low);if(!cand.length)return null;var mx=Math.max.apply(null,cand.map(function(c){return c.len}));cand=cand.filter(function(c){return c.len===mx}).map(function(c){return c.it});if(m){var sz=m[1]+(m[2]?" "+m[2]:"");var hit=cand.filter(function(it){return String(it.u||"").toLowerCase().replace(/\s+/g,"").indexOf(m[1]+(m[2]||"").replace(/\s+/g,""))>=0});if(hit.length)cand=hit}best=cand[0];var q=1,un=null;if(m){q=parseFloat(m[1])||VW[m[1]]||1;un=m[2]||null}return {it:best,q:q,unit:un}}
 function vAdd(r){var it=r.it,f=cart.filter(function(c){return c.n===it.n&&c.u===(it.u||"")})[0];if(f)f.q=Math.round((f.q+r.q)*1000)/1000;else cart.push({n:it.n,u:it.u||"",p:+it.p,q:r.q,img:it.img||"",e:it.e||""})}
-function voiceAddBillItem(t){var parts=String(t).split(/\s+(?:aur|और)\s+|,/),ok=[],miss=[];parts.forEach(function(p){if(!String(p).trim())return;var r=vParse(p);if(r){vAdd(r);ok.push(r.it.n+" "+r.q+" "+(r.it.u||""))}else miss.push(String(p).trim())});if(!ok.length)return false;draw();sayBack(ok.join(", ")+" bill mein jod diya. Kul "+fm(tot())+" rupaye.");if(miss.length)notify("Ye samajh nahi aaya: "+miss.join(", "));return true}
+function voiceAddBillItem(t){var parts=String(t).split(/\s+(?:aur|और)\s+|,/),ok=[],miss=[],pend=[];parts.forEach(function(p){if(!String(p).trim())return;var r=vParse(p);if(r){pend.push(r);ok.push(r.it.n+" "+r.q+" "+(r.it.u||""))}else{var sg=vSuggest(p);miss.push(String(p).trim()+(sg?" (kya \u201c"+sg+"\u201d?)":""))}});if(!ok.length)return false;var msg="Ye bill mein jodun?\n\n"+ok.join("\n")+(miss.length?"\n\nSamajh nahi aaya: "+miss.join(", "):"");if(!confirm(msg)){notify("Theek hai, kuch nahi joda. Dobara bolein.");return true}pend.forEach(function(r){vAdd(r)});draw();sayBack(ok.join(", ")+" bill mein jod diya. Kul "+fm(tot())+" rupaye.");if(miss.length)notify("Ye samajh nahi aaya: "+miss.join(", "));return true}
 function scanBc(cb){if(!("BarcodeDetector" in window)){notify("Is browser me camera scan nahi hai. Barcode scanner se seedha box me daalo.");var f=document.querySelector("input[placeholder^='Barcode']");if(f)f.focus();return}var BD;try{BD=new BarcodeDetector({formats:["ean_13","ean_8","upc_a","upc_e","code_128","qr_code"]})}catch(e){notify("Barcode scan shuru nahi hua");return}var o=document.createElement("div");o.style.cssText="position:fixed;inset:0;z-index:210;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center";o.innerHTML="<video id='bcV' playsinline muted style='max-width:100%;max-height:70vh'></video><p style='color:#fff'>Barcode camera ke saamne rakhein</p><button id='bcX' style='margin-top:10px'>Band karo</button>";document.body.appendChild(o);var stream=null,alive=true;function stop(){alive=false;if(stream)stream.getTracks().forEach(function(t){t.stop()});o.remove()}document.getElementById("bcX").onclick=stop;navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}}).then(function(st){stream=st;var v=document.getElementById("bcV");v.srcObject=st;v.play();(function tick(){if(!alive)return;BD.detect(v).then(function(r){if(r.length){var code=r[0].rawValue;stop();if(typeof cb==="function"){cb(code)}else{EF.bc=code;draw();notify("Barcode mil gaya: "+code)}return}setTimeout(tick,300)}).catch(function(){setTimeout(tick,500)})})()}).catch(function(){stop();notify("Camera ki permission nahi mili")})}
 function voiceAssistant(){listen(function(raw){var t=String(raw||"").trim(),l=t.toLowerCase(),r;if(!t)return;if((r=calcVoice(t))&&(/\d/.test(t))&&(/[+*/-]|plus|jod|jodo|minus|ghata|guna|times|bhaag|भाग|गुना|जोड़|प्लस|माइनस/.test(l))){notify(r);sayBack(r);return}if(/aaj.*(bikri|sale|sales)|kitni sale|kitni bikri|आज.*बिक्री/.test(l)){r="Aaj ki darj bikri "+fm(sum(today(S.bills))+sum(today(S.qs)))+" rupaye hai.";notify(r);sayBack(r);return}if(/aaj.*(kharcha|kharch|expense)|kitna kharcha|आज.*खर्च/.test(l)){r="Aaj ka darj kharcha "+fm(sum(today(S.exp)))+" rupaye hai.";notify(r);sayBack(r);return}if(/munafa|profit|मुनाफा/.test(l)){r="Aaj ka andazee munafa "+fm(sum(today(S.bills))+sum(today(S.qs))-sum(today(S.exp).filter(function(e){return e.cat!=="Maal kharidi"})))+" rupaye hai.";notify(r);sayBack(r);return}if(/calculator|कैलकुलेटर|hisaab karo|hisab karo/.test(l)){r=calcVoice(t);if(!r){var z=prompt("Hisaab boliye, jaise 25 plus 30");r=z&&calcVoice(z)}if(r){notify(r);sayBack(r)}else sayBack("Jaise 25 plus 30 boliye.");return}if(/bill|बिल/.test(l)&&/(banao|bana do|बनाओ|बना दो)/.test(l)){go("bill");sayBack("Naya bill khul gaya. Ab saaman ka naam boliye.");if(/chawal|atta|chini|namak|दाल|चावल|आटा/.test(l))setTimeout(function(){voiceAddBillItem(t)},400);return}if(tab==="bill"&&voiceAddBillItem(t))return;if(/kharcha likho|kharcha jodo|खर्चा लिखो/.test(l)){go("kharcha");sayBack("Kharcha page khul gaya. Kharche ke liye mic dabayein.");return}if(/online|upi|phone ?pe|gpay|paytm/.test(l)&&/aaj|kitna|kitne|आज/.test(l)){var ol=sum(today(S.bills).filter(function(b){return b.mode==="online"})),cs=sum(today(S.bills).filter(function(b){return b.mode==="cash"}))+sum(today(S.qs));r="Aaj online "+fm(ol)+" rupaye aaya, aur cash "+fm(cs)+" rupaye aaya.";notify(r);sayBack(r);return}if(/udhaar|उधार/.test(l)){go("udhaar");sayBack("Udhaar page khul gaya.");return}notify("Aise bolkar dekhein: Aaj ki bikri kitni hai; Aaj ka kharcha kitna hai; Bill banao; Calculator 25 plus 30.");sayBack("Main samajh nahi paya. Dobara boliye.")})}
 
