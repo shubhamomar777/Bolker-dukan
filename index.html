@@ -986,5 +986,6 @@ function notify(m){var b=document.getElementById("vtoast");if(!b){b=document.cre
 (function(){if(!S.pin)return;var o=document.createElement("div");o.id="lockov";o.style.cssText="position:fixed;inset:0;z-index:200;background:#1c1608;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px";o.innerHTML="<h2 style='color:#fff'>PIN daalo</h2><input id='pinChk' type='password' inputmode='numeric' maxlength='4' style='font-size:24px;text-align:center;width:180px'><button id='pinGo'>Kholo</button><p id='pinMsg' style='color:#fca5a5;margin:0'></p>";document.body.appendChild(o);function go(){if(document.getElementById("pinChk").value===S.pin){o.remove()}else{document.getElementById("pinMsg").textContent="Galat PIN"}}document.getElementById("pinGo").onclick=go;document.getElementById("pinChk").onkeydown=function(e){if(e.key==="Enter")go()}})();
 </script>
 <script>loadVosk();</script>
+  <script src="agent.js"></script>
 </body>
 </html>
