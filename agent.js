@@ -63,6 +63,7 @@ async function agentTurn(userText) {
       var res = await fetch(AGENT_URL, { method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: messages, tools: TOOL_SCHEMAS }) });
       var r = await res.json();
+      notify("RAW: " + JSON.stringify(r).slice(0, 300));
       if (!res.ok || r.error) throw new Error(r.error || ("HTTP " + res.status));
       messages.push({ role: "assistant", content: r.content });
       var uses = r.content.filter(function (b) { return b.type === "tool_use"; });
