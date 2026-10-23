@@ -986,6 +986,51 @@ function notify(m){var b=document.getElementById("vtoast");if(!b){b=document.cre
 (function(){if(!S.pin)return;var o=document.createElement("div");o.id="lockov";o.style.cssText="position:fixed;inset:0;z-index:200;background:#1c1608;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px";o.innerHTML="<h2 style='color:#fff'>PIN daalo</h2><input id='pinChk' type='password' inputmode='numeric' maxlength='4' style='font-size:24px;text-align:center;width:180px'><button id='pinGo'>Kholo</button><p id='pinMsg' style='color:#fca5a5;margin:0'></p>";document.body.appendChild(o);function go(){if(document.getElementById("pinChk").value===S.pin){o.remove()}else{document.getElementById("pinMsg").textContent="Galat PIN"}}document.getElementById("pinGo").onclick=go;document.getElementById("pinChk").onkeydown=function(e){if(e.key==="Enter")go()}})();
 </script>
 <script>loadVosk();</script>
-  <script src="agent.js"></script>
+  <script src="agent.js"></script><script>
+function addUnique(base, add) {
+  var a = (base || "").trim(), b = (add || "").trim();
+  if (!b) return a;
+  if (a === b || a.endsWith(" " + b) || a.endsWith(b)) return a;
+  return (a + " " + b).trim();
+}
+function listen(cb) {
+  if (window.VoskModel) { listenVosk(cb); return; }
+  var R = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!R) { notify("Is browser me voice nahi chalta. Chrome use karo."); return; }
+  var x = new R();
+  x.lang = "hi-IN";
+  x.interimResults = true;
+  x.maxAlternatives = 1;
+  x.continuous = false;
+  var done = false, final = "", tmr = null;
+  function fin() {
+    if (done) return;
+    done = true;
+    try { x.stop(); } catch (e) {}
+    var t = final.trim();
+    if (t) { vState("proc"); vState("ok", t); cb(t); }
+    else vState("bad");
+  }
+  x.onstart = function () { vState("listen"); };
+  x.onresult = function (e) {
+    var live = "";
+    for (var i = e.resultIndex; i < e.results.length; i++) {
+      var r = e.results[i];
+      if (r.isFinal) final = addUnique(final, r[0].transcript);
+      else live += r[0].transcript;
+    }
+    var st = document.getElementById("vst");
+    if (st) st.textContent = "Sun raha hoon: " + (final + " " + live).trim();
+  };
+  x.onend = function () { fin(); };
+  x.onerror = function (e) {
+    if (done) return;
+    done = true;
+    vState("bad");
+    notify("Voice nahi chali (code: " + e.error + ")");
+  };
+  try { x.start(); } catch (er) { notify("Voice shuru nahi hui: " + er.message); }
+}
+  </script>
 </body>
 </html>
